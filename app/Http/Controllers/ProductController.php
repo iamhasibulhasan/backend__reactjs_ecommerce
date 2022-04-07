@@ -40,4 +40,8 @@ class ProductController extends Controller
         $data->update();
         return response()->json('Product updated!!');
     }
+    public function productDetails($id){
+        $data = Product::find($id);
+        return response()->json($data);
+    }
 }
