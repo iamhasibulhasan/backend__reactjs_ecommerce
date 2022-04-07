@@ -27,4 +27,17 @@ class ProductController extends Controller
         $data->delete();
         return response()->json('Delete success');
     }
+    public function edit($id){
+        $data = Product::find($id);
+
+        return response()->json($data);
+    }
+    public function update(Request $request){
+        $data = Product::find($request->id);
+        $data->name = $request->name;
+        $data->price = $request->price;
+        $data->img = $request->img;
+        $data->update();
+        return response()->json('Product updated!!');
+    }
 }
