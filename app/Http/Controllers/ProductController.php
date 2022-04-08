@@ -44,4 +44,15 @@ class ProductController extends Controller
         $data = Product::find($id);
         return response()->json($data);
     }
+
+
+    public function productSearch($search){
+        if ($search != 'all'){
+            $data = Product::where('name', 'like', '%' . $search . '%')->get();
+            return response()->json($data);
+        }else{
+            $products = Product::all();
+            return response()->json($products);
+        }
+    }
 }
